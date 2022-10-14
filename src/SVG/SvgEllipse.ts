@@ -1,5 +1,5 @@
 /*
-    Test 2022
+    SVG 2022
 
     Authors: Colin Böttger
 */
@@ -8,15 +8,13 @@ import { Svg } from './Svg-Base.js';
 import { SvgBase } from './SvgBase.js';
 import { createSVG } from './SvgObject.js';
 
-export class SvgEllipse extends SvgBase
-{
+export class SvgEllipse extends SvgBase {
   node: SVGEllipseElement;
 
-  constructor(target?: Svg)
-  {
+  constructor(target?: Svg) {
     super();
     this.node = createSVG('ellipse');
-    if(target)
+    if (target)
       target.appandChild(this);
     this.color = "#000";
   }
@@ -30,10 +28,8 @@ export class SvgEllipse extends SvgBase
   get y(): number { return this.m_y; }
   setY(value: number) { this.m_y = value; return this; }
 
-  set color(value: string)
-  {
-    if(value.match(/#[0-9 A-F]{3,6}/) && (value.length == 4 || value.length == 7))
-    {
+  set color(value: string) {
+    if (value.match(/#[0-9 A-F]{3,6}/) && (value.length == 4 || value.length == 7)) {
       this.node.setAttribute("fill", value);
       this.node.setAttribute("stroke", value);
     }
@@ -47,8 +43,7 @@ export class SvgEllipse extends SvgBase
   set radius(value: number) { this.m_rx = value; this.m_ry = value; }
   setRadius(value: number) { this.radius = value; return this; }
 
-  create(): SvgBase
-  {
+  create(): SvgBase {
     this.node.setAttribute("cx", this.m_x.toString());
     this.node.setAttribute("cy", this.m_y.toString());
     this.node.setAttribute("rx", this.m_rx.toString());

@@ -1,5 +1,5 @@
 /*
-    Test 2022
+    SVG 2022
 
     Authors: Colin Böttger
 */

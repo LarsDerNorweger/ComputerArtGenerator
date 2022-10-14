@@ -1,5 +1,5 @@
 /*
-    Test 2022
+    SVG 2022
 
     Authors: Colin Böttger
 */
@@ -10,18 +10,16 @@ let colors = {
   selected: "#FF0000"
 };
 
-export abstract class SvgObject extends SvgBase
-{
+export abstract class SvgObject extends SvgBase {
   abstract create(): SvgObject;
 
   set onClick(cb: (e: MouseEvent) => void) { this.node.onmousedown = cb; }
 
   set onSelect(value: (isSelected: boolean, object: SvgObject) => void) { this.m_onselect = value; }
-  set isSelected(value: boolean)
-  {
+  set isSelected(value: boolean) {
     this.node.setAttribute("stroke", value ? colors.selected : this.m_color);
     this.m_isSelected = value;
-    if(this.m_onselect)
+    if (this.m_onselect)
       this.m_onselect(this.m_isSelected, this);
   }
   get isSelected(): boolean { return this.m_isSelected; }
@@ -33,14 +31,12 @@ export abstract class SvgObject extends SvgBase
   get y(): number { return this.coords[1]; }
   set y(value: number) { this.coords[1] = value; }
 
-  setStart(x: number, y: number)
-  {
+  setStart(x: number, y: number) {
     this.coords[0] = x;
     this.coords[1] = y;
     return this;
   }
-  setEnd(x: number, y: number)
-  {
+  setEnd(x: number, y: number) {
     this.coords[2] = x;
     this.coords[3] = y;
     this.coords[4] = x - this.coords[0];
@@ -48,8 +44,7 @@ export abstract class SvgObject extends SvgBase
     return this;
   }
 
-  moveTopTo(x: number, y: number)
-  {
+  moveTopTo(x: number, y: number) {
     this.coords[2] = this.coords[4] + x;
     this.coords[3] = this.coords[5] + y;
     this.coords[0] = x;
@@ -58,8 +53,7 @@ export abstract class SvgObject extends SvgBase
     return this;
   }
 
-  moveBottomTo(x: number, y: number)
-  {
+  moveBottomTo(x: number, y: number) {
     this.coords[0] = x - this.coords[4];
     this.coords[1] = y - this.coords[5];
     this.coords[2] = x;

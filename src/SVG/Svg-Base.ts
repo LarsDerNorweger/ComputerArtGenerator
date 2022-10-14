@@ -1,5 +1,5 @@
 /*
-    Test 2022
+    SVG 2022
 
     Authors: Colin Böttger
 */
@@ -9,19 +9,16 @@ export { Svg, rgb };
 
 function rgb(r: number, g: number, b: number): number { return r * 256 * 256 + g * 256 + b; }
 
-class Svg
-{
+class Svg {
   node: SVGSVGElement;
-  constructor(target?: HTMLElement)
-  {
+  constructor(target?: HTMLElement) {
     this.node = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    if(target)
+    if (target)
       target.appendChild(this.node);
   }
 
-  clear()
-  {
-    while(this.node.lastChild)
+  clear() {
+    while (this.node.lastChild)
       this.node.lastChild.remove();
   }
 

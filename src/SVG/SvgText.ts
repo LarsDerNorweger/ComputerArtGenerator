@@ -1,5 +1,5 @@
 /*
-    Test 2022
+    SVG 2022
 
     Authors: Colin Böttger
 */
@@ -8,17 +8,15 @@ import { Svg } from './Svg-Base.js';
 import { SvgBase } from './SvgBase.js';
 import { createSVG } from './SvgObject.js';
 
-export class SvgText extends SvgBase
-{
+export class SvgText extends SvgBase {
   node: SVGTextElement;
 
-  constructor(target?: Svg)
-  {
+  constructor(target?: Svg) {
     super(target);
     this.node = createSVG('text');
     this.node.setAttribute("fill", "transparent");
     this.color = "#000";
-    if(target)
+    if (target)
       target.appandChild(this);
   }
 
@@ -39,16 +37,14 @@ export class SvgText extends SvgBase
   set rotate(value: number) { this.node.setAttribute("transform", `rotate(${value},${this.m_x},${this.m_y})`); }
   setRotation(value: number) { this.rotate = value; return this; }
 
-  set color(value: string)
-  {
-    if(value.match(/#[0-9 A-F]{3,6}/) && (value.length == 4 || value.length == 7))
+  set color(value: string) {
+    if (value.match(/#[0-9 A-F]{3,6}/) && (value.length == 4 || value.length == 7))
       this.node.setAttribute("fill", value);
     else
       throw new Error;
   }
 
-  create(): SvgText
-  {
+  create(): SvgText {
     this.node.setAttribute('y', this.m_y.toString());
     this.node.setAttribute('x', this.m_x.toString());
     return this;
