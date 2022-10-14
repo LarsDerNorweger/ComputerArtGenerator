@@ -1,0 +1,14 @@
+{
+"compilerOptions": {
+  "allowJs": false,
+  "target": "ES6",
+  "allowUnreachableCode": true,
+  "strict": true,
+  "sourceMap": true,
+  "outDir": "./dist",
+  "noImplicitAny": true,
+  "watch": true,
+
+},    
+  "include": ["./src/**/*"]
+}   
